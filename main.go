@@ -147,6 +147,8 @@ func (ph *MessageHandler) responder() {
 		if hostPoolResponse != nil {
 			if !success {
 				hostPoolResponse.Mark(errors.New("failed"))
+				log.Printf("Failed to publish message: %s\n", t.Error)
+				// TODO: do we need to republish the message?
 			} else {
 				hostPoolResponse.Mark(nil)
 			}
